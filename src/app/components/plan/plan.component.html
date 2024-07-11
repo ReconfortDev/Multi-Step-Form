@@ -2,23 +2,27 @@
     <h1 class="text-4xl font-bold">Select your Plan</h1>
     <p class="text-slate-600">You have the option of monthly or yearly billing.</p>
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div *ngFor="let plan of plans" [ngClass]="{'border-[#483EFF]': plan.active, 'border-[#D6D9E6]': !plan.active}"
+        <div *ngFor="let plan of plans"
+             [ngClass]="{'border-[#483EFF]': plan.active, 'border-[#D6D9E6]': !plan.active}"
              (click)="selectPlan(plan)"
-             class="rounded-xl bg-[#F8F9FF] p-4 flex lg:flex-col items-center lg:items-start gap-4 border-2 border-[#483EFF] hover:border-[#483EFF]">
+             class="rounded-xl bg-[#F8F9FF] p-4 flex lg:flex-col items-center lg:items-start gap-8 border-2 border-[#483EFF] hover:border-[#483EFF]">
             <img [ngSrc]="plan.icon" alt="{{ plan.name }}" height="40" width="40"/>
             <div class="flex flex-col gap-2">
                 <h1 class="font-semibold text-lg">{{ plan.name }}</h1>
                 <p class="text-gray-400 font-semibold">
-                    {{ (billingPeriod$ | async) === 'monthly' ? '$' + plan.monthlyPrice + '/mo' : '$' + plan.yearlyPrice + '/yr' }}
+                    {{ (billingPeriod$ | async) === 'monthly' ? ('$' + plan.monthlyPrice + '/mo') : ('$' + plan.yearlyPrice + '/yr') }}
                 </p>
+                <p *ngIf="(billingPeriod$ | async) === 'yearly'" class="text-[#022959] font-normal text-sm">2 months free</p>
             </div>
         </div>
     </div>
     <div class="w-full bg-[#F8F9FF] p-4 flex justify-center items-center rounded-lg gap-4">
-        <h1 [ngClass]="{'text-[#022959]': (billingPeriod$ | async) === 'monthly'}" class="font-bold">Monthly</h1>
-        <div class="w-12 flex justify-start items-start bg-[#022959] rounded-full p-1 cursor-pointer" (click)="toggleBillingPeriod()">
-            <div [ngClass]="{'translate-x-full': (billingPeriod$ | async) === 'yearly'}" class="w-5 h-5 bg-white rounded-full transition-transform"></div>
+        <h1 [ngClass]="{'text-slate-400': (billingPeriod$ | async) === 'monthly'}" class="font-bold text-[#022959]">Monthly</h1>
+        <div class="w-12 flex justify-start items-start bg-[#022959] rounded-full p-1 cursor-pointer"
+             (click)="toggleBillingPeriod()">
+            <div [ngClass]="{'translate-x-full': (billingPeriod$ | async) === 'yearly'}"
+                 class="w-5 h-5 bg-white rounded-full transition-transform"></div>
         </div>
-        <h1 [ngClass]="{'text-[#022959]': (billingPeriod$ | async) === 'yearly'}" class="font-bold">Yearly</h1>
+        <h1 [ngClass]="{'text-slate-400': (billingPeriod$ | async) === 'yearly'}" class="font-bold text-[#022959]">Yearly</h1>
     </div>
 </div>

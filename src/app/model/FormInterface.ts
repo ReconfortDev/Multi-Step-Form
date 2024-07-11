@@ -12,3 +12,5 @@ export interface ADDON {
     price: number;
     selected: boolean;
 }
+
+export type BILLING_PERIOD = 'monthly' | 'yearly';
