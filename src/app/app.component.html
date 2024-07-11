@@ -1,0 +1,36 @@
+<div class="bg-[#EFF5FF] min-h-screen min-w-screen flex justify-start md:justify-center md:items-center items-start">
+    <div class="bg-[#EFF5FF] md:bg-white md:p-4 w-[100%] md:w-[80%] lg:w-[70%] xl:w-[60%] rounded-3xl md:shadow flex flex-col lg:flex-row">
+        <div class="bg-sm-background lg:bg-lg-background rounded-none md:rounded-t-2xl  lg:rounded-2xl p-4 pb-32 w-[100%] lg:w-[40%] xl:w-[30%] lg:h-[70vh] bg-no-repeat bg-bottom bg-cover flex flex-row justify-center lg:flex-col lg:justify-start gap-6">
+            <li class="flex items-center gap-6 group p-4 rounded-lg" *ngFor="let step of [1, 2, 3, 4]">
+                <div class="w-12 h-12 border-2 group-hover:border-transparent rounded-full flex justify-center items-center font-bold text-white group-hover:bg-[#BEE2FD] group-hover:text-[#022959]"
+                     [ngClass]="{'bg-[#BEE2FD] !text-[#022959] border-transparent': currentStep === step}">
+                    {{ step }}
+                </div>
+                <div class="hidden lg:block">
+                    <p class="font-light text-[#ABBCFF]">STEP {{ step }}</p>
+                    <h2 class="font-bold text-white">{{ stepTitle(step) }}</h2>
+                </div>
+            </li>
+        </div>
+        <div class="w-full p-4 flex flex-col justify-center items-center md:items-start">
+            <div class="h-full rounded-lg bg-white shadow md:shadow-none  w-[95%] md:w-full -mt-32 lg:mt-0 p-6 lg:px-8 flex flex-col justify-center">
+                <app-personal-info *ngIf="currentStep === 1"/>
+                <app-plan *ngIf="currentStep === 2"/>
+                <app-addons *ngIf="currentStep === 3"/>
+                <app-summary *ngIf="currentStep === 4"/>
+                <app-finish *ngIf="currentStep === 5"/>
+            </div>
+            <div class="w-full absolute bottom-0 left-0 bg-white p-4 md:relative flex justify-between mt-4 xl:mt-8 px-8" [ngClass]="{'hidden': currentStep === 5}">
+                <button class="p-4 px-6 rounded-2xl font-semibold text-[#022959] mr-auto cursor-pointer activated"
+                        (click)="goToPreviousStep()" [ngClass]="{'hidden': currentStep === 1}">Go Back
+                </button>
+                <button class=" p-4 px-6 bg-[#022959] rounded-2xl font-semibold text-white ml-auto cursor-pointer
+                        activated
+                "
+                (click)="goToNextStep()" [disabled]="currentStep === 5">Next
+                Step
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

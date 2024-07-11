@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*{
+    transition: all ease-in-out 0.2s;
+    box-sizing: border-box;
+}
+
+.activated {
+    scale: 1;
+}
+
+.activated:hover{
+    scale: 1.02;
+    transition: scale 0.2s;
+}
+
+.transition-transform {
+    transition: transform 0.3s;
+}
+.translate-x-full {
+    transform: translateX(100%);
+}
