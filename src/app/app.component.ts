@@ -6,7 +6,7 @@ import {PlanComponent} from "./components/plan/plan.component";
 import {AddonsComponent} from "./components/addons/addons.component";
 import {SummaryComponent} from "./components/summary/summary.component";
 import {FinishComponent} from "./components/finish/finish.component";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -18,13 +18,27 @@ export class AppComponent {
   currentStep: number = 1;
   personalInfoForm: FormGroup;
 
+  // Personal info functionalities
+
+  // Function of validating form
+  phoneValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const validPhoneNumberPattern = /^\+?[1-9]\d{1,14}$/;
+      const isValid = validPhoneNumberPattern.test(control.value);
+      return isValid ? null : { invalidPhone: true };
+    };
+  }
+
   constructor(private fb: FormBuilder) {
     this.personalInfoForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required]
+      phone: ['', [Validators.required, this.phoneValidator()]]
     });
   }
+
+
+
 
   goToNextStep(): void {
     if (this.currentStep === 1 && this.personalInfoForm.invalid) {

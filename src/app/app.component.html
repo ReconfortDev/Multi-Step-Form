@@ -14,7 +14,7 @@
         </div>
         <div class="w-full p-4 flex flex-col justify-center items-center md:items-start">
             <div class="h-full rounded-lg bg-white shadow md:shadow-none  w-[95%] md:w-full -mt-32 lg:mt-0 p-6 lg:px-8 flex flex-col justify-center">
-                <app-personal-info *ngIf="currentStep === 1"/>
+                <app-personal-info *ngIf="currentStep === 1" [personalInfoForm]="personalInfoForm"/>
                 <app-plan *ngIf="currentStep === 2"/>
                 <app-addons *ngIf="currentStep === 3"/>
                 <app-summary *ngIf="currentStep === 4"/>
