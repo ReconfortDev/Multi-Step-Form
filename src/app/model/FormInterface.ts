@@ -5,3 +5,10 @@ export interface PLAN {
     icon: string;
     active: boolean;
 }
+
+export interface ADDON {
+    name: string;
+    description: string;
+    price: number;
+    selected: boolean;
+}

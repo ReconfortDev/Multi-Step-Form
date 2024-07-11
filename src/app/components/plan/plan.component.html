@@ -14,13 +14,6 @@
             </div>
         </div>
     </div>
-<!--    <div class="w-full bg-[#F8F9FF] p-4 flex justify-center items-center rounded-lg gap-4">-->
-<!--        <h1 class="font-bold">Monthly</h1>-->
-<!--        <div class="w-12 flex justify-start items-start bg-[#022959] rounded-full p-1">-->
-<!--            <div class=" w-5 h-5 bg-white  rounded-full"></div>-->
-<!--        </div>-->
-<!--        <h1 class="font-bold text-[#9699AA]">Yearly</h1>-->
-<!--    </div>-->
     <div class="w-full bg-[#F8F9FF] p-4 flex justify-center items-center rounded-lg gap-4">
         <h1 [ngClass]="{'text-[#022959]': (billingPeriod$ | async) === 'monthly'}" class="font-bold">Monthly</h1>
         <div class="w-12 flex justify-start items-start bg-[#022959] rounded-full p-1 cursor-pointer" (click)="toggleBillingPeriod()">

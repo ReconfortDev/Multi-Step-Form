@@ -6,6 +6,7 @@ import {PlanComponent} from "./components/plan/plan.component";
 import {AddonsComponent} from "./components/addons/addons.component";
 import {SummaryComponent} from "./components/summary/summary.component";
 import {FinishComponent} from "./components/finish/finish.component";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -14,13 +15,24 @@ import {FinishComponent} from "./components/finish/finish.component";
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = 'Multi Step Form';
-
   currentStep: number = 1;
+  personalInfoForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.personalInfoForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', Validators.required]
+    });
+  }
 
   goToNextStep(): void {
+    if (this.currentStep === 1 && this.personalInfoForm.invalid) {
+      this.personalInfoForm.markAllAsTouched();
+      return;
+    }
     if(this.currentStep < 5) {
-      this.currentStep++
+      this.currentStep++;
     }
   }
 

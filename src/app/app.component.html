@@ -24,11 +24,9 @@
                 <button class="p-4 px-6 rounded-2xl font-semibold text-[#022959] mr-auto cursor-pointer activated"
                         (click)="goToPreviousStep()" [ngClass]="{'hidden': currentStep === 1}">Go Back
                 </button>
-                <button class=" p-4 px-6 bg-[#022959] rounded-2xl font-semibold text-white ml-auto cursor-pointer
-                        activated
-                "
-                (click)="goToNextStep()" [disabled]="currentStep === 5">Next
-                Step
+                <button class="p-4 px-6 bg-[#022959] rounded-2xl font-semibold text-white ml-auto cursor-pointer activated"
+                        (click)="goToNextStep()" [disabled]="currentStep === 5">
+                    {{ currentStep === 4 ? 'Finish' : 'Next Step' }}
                 </button>
             </div>
         </div>
