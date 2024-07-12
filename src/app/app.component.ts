@@ -17,7 +17,7 @@ import {BehaviorSubject} from "rxjs";
     templateUrl: './app.component.html',
 })
 export class AppComponent {
-    currentStep: number = 4;
+    currentStep: number = 1;
     personalInfoForm: FormGroup;
 
     plans: PLAN[] = [
