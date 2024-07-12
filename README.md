@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 # Live Project 
 
-Here is the live link to this Project : [AmaliQuiz](https://github.com/angular/angular-cli) version 18.0.6.
+Here is the live link to this Project : [AmaliQuiz](https://amaliform.netlify.app/)
 
 ## Development server
 
