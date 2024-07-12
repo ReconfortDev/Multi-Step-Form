@@ -1,39 +1,39 @@
 <div class="w-full h-full flex flex-col gap-4">
-    <h1 class="text-4xl font-bold">Personal info</h1>
+    <h1 class="text-3xl md:text-4xl font-bold">Personal info</h1>
     <p class="text-slate-600">Please provide your name, email address, and phone number.</p>
     <form [formGroup]="personalInfoForm" class="py-4 flex flex-col gap-4">
         <div class="w-full flex flex-col gap-2">
             <div class="w-full flex items-center justify-between">
-                <label for="name" class="text-lg font-semibold">Name</label>
+                <label for="name" class="text-base md:text-lg font-semibold">Name</label>
                 <div *ngIf="personalInfoForm.get('name')?.invalid && personalInfoForm.get('name')?.touched"
-                     class="text-red-600">
+                     class="text-base md:text-lg text-red-600">
                     Name is required.
                 </div>
             </div>
             <input type="text" placeholder="e.g. Stephen King" id="name" formControlName="name"
-                   class="p-4 bg-transparent border border-slate-200 rounded-xl text-lg font-medium outline-2 outline-[#483EFF] ring-none"/>
+                   class="p-4 bg-transparent border border-slate-200 rounded-xl text-base md:text-lg font-medium outline-2 outline-[#483EFF] ring-none"/>
         </div>
         <div class="w-full flex flex-col gap-2">
             <div class="w-full flex items-center justify-between">
-                <label for="email" class="text-lg font-semibold">Email Address</label>
+                <label for="email" class="text-base md:text-lg font-semibold">Email Address</label>
                 <div *ngIf="personalInfoForm.get('email')?.invalid && personalInfoForm.get('email')?.touched"
-                     class="text-red-600">
+                     class="text-base md:text-lg text-red-600">
                     Email is required.
                 </div>
             </div>
             <input type="text" placeholder="e.g. stephenking@lorem.com" id="email" formControlName="email"
-                   class="p-4 bg-transparent border border-slate-200 rounded-xl text-lg font-medium outline-2 outline-[#483EFF] ring-none"/>
+                   class="p-4 bg-transparent border border-slate-200 rounded-xl text-base md:text-lg font-medium outline-2 outline-[#483EFF] ring-none"/>
         </div>
         <div class="w-full flex flex-col gap-2">
             <div class="w-full flex items-center justify-between">
-                <label for="phone" class="text-lg font-semibold">Phone number</label>
+                <label for="phone" class="text-base md:text-lg font-semibold">Phone number</label>
                 <div *ngIf="personalInfoForm.get('phone')?.invalid && personalInfoForm.get('phone')?.touched"
-                     class="text-red-600">
+                     class="text-red-600 text-base md:text-lg">
                     Phone is required.
                 </div>
             </div>
             <input type="text" placeholder="e.g. +1 234 567 890" id="phone" formControlName="phone"
-                   class="p-4 bg-transparent border border-slate-200 rounded-xl text-lg font-medium outline-2 outline-[#483EFF] ring-none"/>
+                   class="p-4 bg-transparent border border-slate-200 rounded-xl text-base md:text-lg font-medium outline-2 outline-[#483EFF] ring-none"/>
         </div>
     </form>
 </div>
