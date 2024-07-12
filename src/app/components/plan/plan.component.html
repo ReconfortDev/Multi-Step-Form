@@ -17,12 +17,12 @@
         </div>
     </div>
     <div class="w-full bg-[#F8F9FF] p-4 flex justify-center items-center rounded-lg gap-4">
-        <h1 [ngClass]="{'text-slate-400': (billingPeriod$ | async) === 'monthly'}" class="font-bold text-[#022959]">Monthly</h1>
+        <h1 [ngClass]="{'!text-[#022959]': (billingPeriod$ | async) === 'monthly'}" class="font-bold text-slate-400">Monthly</h1>
         <div class="w-12 flex justify-start items-start bg-[#022959] rounded-full p-1 cursor-pointer"
              (click)="toggleBillingPeriod()">
             <div [ngClass]="{'translate-x-full': (billingPeriod$ | async) === 'yearly'}"
                  class="w-5 h-5 bg-white rounded-full transition-transform"></div>
         </div>
-        <h1 [ngClass]="{'text-slate-400': (billingPeriod$ | async) === 'yearly'}" class="font-bold text-[#022959]">Yearly</h1>
+        <h1 [ngClass]="{'!text-[#022959]': (billingPeriod$ | async) === 'yearly'}" class="font-bold text-slate-400">Yearly</h1>
     </div>
 </div>

@@ -4,10 +4,10 @@
     <div class="bg-[#F8F9FF] p-4 md:p-8 rounded-xl grid grid-cols-1 gap-8">
         <div class="border-b border-9699AA py-2 flex justify-between items-center">
             <div>
-                <h1 class="font-bold">{{ getActivePlan()?.name }} (Monthly)</h1>
+                <h1 class="font-bold">{{ getActivePlan()?.name }} ({{ billingPeriod === 'monthly' ? 'Monthly' : 'Yearly' }})</h1>
                 <p class="text-slate-500 underline hover:text-blue-600 cursor-pointer" (click)="changePlan()">Change</p>
             </div>
-            <p>${{getActivePlan()?.monthlyPrice }}/mo</p>
+            <p>{{billingPeriod === 'monthly' ? '$' + getActivePlan()?.monthlyPrice + '/mo' : '$' + getActivePlan()?.yearlyPrice + '/yr' }}</p>
         </div>
         <div *ngFor="let addon of getActiveAddons()" class="w-full flex justify-between items-center">
             <p class="text-slate-600">{{ addon.name }}</p>
@@ -16,7 +16,7 @@
     </div>
 
     <div class="w-full flex justify-between items-center md:px-8 mt-4">
-        <p class="text-slate-600">Total per Month</p>
-        <p class="text-blue-600 text-xl font-black">+${{ getTotal() }}/mo</p>
+        <p class="text-slate-600">Total per {{ billingPeriod === 'monthly' ?  'Month' : 'Year' }}</p>
+        <p class="text-blue-600 text-xl font-black">+${{ getTotal() }}/{{ billingPeriod === 'monthly' ?  'mo' : 'yr' }}</p>
     </div>
 </div>
